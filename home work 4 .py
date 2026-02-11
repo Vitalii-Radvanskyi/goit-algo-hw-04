@@ -5,7 +5,7 @@ def total_salary(path):
     total = 0
     count = 0
     if not path.exists():
-        raise FileNotFoundError
+        return 0, 0
     with path.open(encoding='utf-8') as file:
         for line in file:
             try:
@@ -20,13 +20,15 @@ def total_salary(path):
     average = total/count
     return (total,average)
 
+total, average = total_salary('salary.txt') # моя перевірка 
+print(f'Загальна сума заробітньої платні: {total},\nСереднє значення заробітньої платні: {average}')
 
 
 def get_cats_info(path):
     cats_info = []
     path = Path(path)
     if not path.exists():
-        raise FileNotFoundError
+        return []
     with path.open(encoding='utf-8') as file:
         for line in file:
             try:
@@ -35,3 +37,7 @@ def get_cats_info(path):
             except ValueError:
                 continue
     return cats_info  
+
+cats_list = get_cats_info('test.txt') # моя перевірка 
+for line in cats_list:
+    print(line)
