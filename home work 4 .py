@@ -1,3 +1,5 @@
+from pathlib import Path
+
 def total_salary(path):
     path = Path(path)
     total = 0
@@ -8,7 +10,7 @@ def total_salary(path):
         for line in file:
             try:
                 name, salary = line.strip().split(',')
-                total += int(salary)
+                total += float(salary)
                 count +=1
             except ValueError:
                 continue
@@ -17,10 +19,6 @@ def total_salary(path):
     
     average = total/count
     return (total,average)
-
-
-total, average = total_salary('salary.txt') # моя перевірка 
-print(f'Загальна сума заробітньої платні: {total},\nСереднє значення заробітньої платні: {average}')
 
 
 
@@ -33,12 +31,7 @@ def get_cats_info(path):
         for line in file:
             try:
                 cat_id, name, age =line.strip().split(',')
-                cats_info.append({"cat_id":cat_id, "name":name, 'age':int(age)})
+                cats_info.append({"cat_id":cat_id, "name":name, 'age':age})
             except ValueError:
                 continue
     return cats_info  
-
-
-cats_list = get_cats_info('test.txt') # моя перевірка 
-for line in cats_list:
-    print(line)
