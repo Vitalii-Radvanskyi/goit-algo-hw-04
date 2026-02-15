@@ -54,7 +54,7 @@ def change_contact(args, contacts):
     if len(args) != 2:
         return "Invalid command."
     name, new_phone = args
-    if not name is contacts:
+    if not name in contacts:
         return "Contact not found."
     contacts[name] = new_phone
     return "Contact updated."
@@ -63,7 +63,7 @@ def show_phon(args, contacts):
     if len(args) != 1:
         return "Invalid command."
     name = args[0]
-    if not name is contacts:
+    if not name in contacts:
         return "Contact not found."
     return contacts[name]
 def show_all(contacts):
